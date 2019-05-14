@@ -2,10 +2,13 @@ package com.polytech.polyNet.application;
 
 public class Story {
 
-    public String content;
+    private String content;
 
     public Story(String content) {
         this.content  = content;
     }
 
+    public String getContent() {
+        return this.content;
+    }
 }
