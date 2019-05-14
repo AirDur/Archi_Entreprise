@@ -15,7 +15,7 @@ public class PublicationServiceTest {
 
     @Test
     public void should_save_story() {
-        /*
+
         ApplicationContext context = SpringApplication.run(AppConfig.class);
 
         //GIVEN :
@@ -33,7 +33,6 @@ public class PublicationServiceTest {
         List stories = storyRepository.findAll();
         //Assert.assertEquals(stories.size(), 2);
         //Assert.assertEquals(asList(story1, story2), stories);
-         */
     }
 
     @Test
