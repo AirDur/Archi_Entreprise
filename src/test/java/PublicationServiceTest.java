@@ -33,5 +33,7 @@ public class PublicationServiceTest {
     }
 
     @Test
-    public void s
+    public void change_story() {
+        
+    }
 }
