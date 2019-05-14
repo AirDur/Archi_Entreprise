@@ -5,6 +5,8 @@ import com.polytech.polyNet.application.PublicationService;
 import com.polytech.polyNet.application.PublicationServiceImpl;
 import com.polytech.polyNet.data.JdbcStoryRepository;
 import com.polytech.polyNet.data.StoryRepository;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -33,5 +35,9 @@ public class AppConfig {
         return new PublicationServiceImpl(storyRepository());
     }
 
+    @Bean
+    ServletWebServerFactory servletWebServerFactory(){
+        return new TomcatServletWebServerFactory();
+    }
 
 }
