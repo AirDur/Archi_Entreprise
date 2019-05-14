@@ -1,6 +1,8 @@
 package com.polytech.polyNet.infrastructure;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
+import com.polytech.polyNet.application.FeedService;
+import com.polytech.polyNet.application.FeedServiceImpl;
 import com.polytech.polyNet.application.PublicationService;
 import com.polytech.polyNet.application.PublicationServiceImpl;
 import com.polytech.polyNet.data.JdbcStoryRepository;
@@ -31,8 +33,13 @@ public class AppConfig {
     }
 
     @Bean
-    PublicationService publicationService(){
+    PublicationService publicationService() {
         return new PublicationServiceImpl(storyRepository());
+    }
+
+    @Bean
+    FeedService feedService() {
+        return new FeedServiceImpl(storyRepository());
     }
 
     @Bean

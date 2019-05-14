@@ -1,26 +1,34 @@
 package com.polytech.polyNet.controller;
 
+import com.polytech.polyNet.application.FeedService;
+import com.polytech.polyNet.application.PublicationService;
 import com.polytech.polyNet.application.Story;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collections;
 import java.util.List;
 
 @RestController
 public class StoryController {
 
+    @Autowired
+    PublicationService publicationService;
+
+    @Autowired
+    FeedService feedService;
+
     @PostMapping
     public void share(String content) {
-        Story story = new Story(content);
+        publicationService.share(new Story(content));
 
     }
 
     @GetMapping("/feed")
     public List<Story> feed() {
-        return Collections.singletonList(new Story("Allez Marseille"));
+        return feedService.fetchAll();
     }
 
     @GetMapping("/toto")
