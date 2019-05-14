@@ -14,16 +14,18 @@ import java.util.List;
 @RestController
 public class StoryController {
 
-    @Autowired
-    PublicationService publicationService;
+    private FeedService feedService;
+    private PublicationService publicationService;
 
     @Autowired
-    FeedService feedService;
+    public StoryController(PublicationService publicationService, FeedService feedService) {
+        this.publicationService = publicationService;
+        this.feedService = feedService;
+    }
 
     @PostMapping
     public void share(String content) {
         publicationService.share(new Story(content));
-
     }
 
     @GetMapping("/feed")
