@@ -1,10 +1,7 @@
 package com.polytech.polyNet.infrastructure;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
-import com.polytech.polyNet.application.FeedService;
-import com.polytech.polyNet.application.FeedServiceImpl;
-import com.polytech.polyNet.application.PublicationService;
-import com.polytech.polyNet.application.PublicationServiceImpl;
+import com.polytech.polyNet.application.*;
 import com.polytech.polyNet.data.JdbcStoryRepository;
 import com.polytech.polyNet.data.StoryRepository;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
@@ -42,5 +39,7 @@ public class AppConfig {
         return new FeedServiceImpl(storyRepository());
     }
 
+    @Bean
+    StoryDetailService storyDetailService() { return new StoryDetailServiceImpl(storyRepository());}
 
 }
