@@ -24,7 +24,7 @@ public class StoryController {
         this.storyDetailService = storyDetailService;
     }
 
-    @PostMapping("/more")
+    @PostMapping("/share")
     public void share(String content) {
         publicationService.share(new Story(content));
     }

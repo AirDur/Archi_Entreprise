@@ -1,6 +1,6 @@
-var todoApp = angular.module('todoApp', ['ui.router','ngCookies']);
+var PolyNet = angular.module('PolyNet', ['ui.router','ngCookies']);
 
-todoApp.config(function($stateProvider){
+PolyNet.config(function($stateProvider){
 
     var indexState = {
         name: "index",
@@ -13,7 +13,7 @@ todoApp.config(function($stateProvider){
 
 });
 
-todoApp.factory('indexFactory', ['$http', function($http) {
+PolyNet.factory('indexFactory', ['$http', function($http) {
     var factory = {};
 
     factory.getFeed = function(callback){
@@ -27,21 +27,41 @@ todoApp.factory('indexFactory', ['$http', function($http) {
         });
     };
 
+    factory.share = function(content, callback) {
+        $http({
+            method: 'POST',
+            url: '/share',
+            data: content
+        }).then(function  successCallback(response){
+            callback(response)
+        }, function errorCallback(err){
+            console.log('Error: ' + err.data.error);
+        });
+    };
+
     return factory;
 }]);
 
-todoApp.controller('indexCtrl',
+PolyNet.controller('indexCtrl',
     ['$cookies','$scope', '$state', 'indexFactory', function($cookies,$scope,$state,indexFactory){
     $scope.liste_donnee = {};
-    $scope.userR = {};
-    $scope.errorData = {};
 
-    indexFactory.getFeed(function (response) {
-        $scope.liste_donnee = response.data;
-    });
-    $scope.refreshTaskSet = function () {
+    $scope.getFeed = function() {
+        indexFactory.getFeed(function (response) {
+            $scope.liste_donnee = response.data;
+        });
+    };
 
-    }
+    $scope.shareStory = function(){
+        var content = $scope.contentStory;
+        console.log(content);
+        indexFactory.share(content, function(){
+            $scope.getFeed();
+            $scope.contentStory = '';
+        });
+    };
+
+    $scope.getFeed();
 
 }]);
 
