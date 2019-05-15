@@ -4,7 +4,8 @@ import com.mysql.cj.jdbc.MysqlDataSource;
 import com.polytech.polyNet.application.*;
 import com.polytech.polyNet.data.JdbcStoryRepository;
 import com.polytech.polyNet.data.StoryRepository;
-import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.server.WebServer;
+import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,5 +42,13 @@ public class AppConfig {
 
     @Bean
     StoryDetailService storyDetailService() { return new StoryDetailServiceImpl(storyRepository());}
+
+    @Bean
+    ServletWebServerFactory servletWebServerFactory() { return new ServletWebServerFactory() {
+        @Override
+        public WebServer getWebServer(ServletContextInitializer... initializers) {
+            return null;
+        }
+    }; }
 
 }
