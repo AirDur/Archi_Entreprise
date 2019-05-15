@@ -42,9 +42,5 @@ public class AppConfig {
         return new FeedServiceImpl(storyRepository());
     }
 
-    @Bean
-    ServletWebServerFactory servletWebServerFactory(){
-        return new TomcatServletWebServerFactory();
-    }
 
 }
