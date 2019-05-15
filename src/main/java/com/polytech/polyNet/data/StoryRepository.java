@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface StoryRepository {
 
-    public void save(Story s);
+    void save(Story s);
 
-    public List<Story> findAll();
+    List<Story> findAll();
 }

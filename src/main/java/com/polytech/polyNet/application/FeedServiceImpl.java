@@ -1,7 +1,5 @@
 package com.polytech.polyNet.application;
 
-import com.polytech.polyNet.application.FeedService;
-import com.polytech.polyNet.application.Story;
 import com.polytech.polyNet.data.StoryRepository;
 
 import java.util.List;
