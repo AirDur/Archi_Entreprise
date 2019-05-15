@@ -13,10 +13,10 @@ todoApp.config(function($stateProvider){
 
 });
 
-todoApp.factory('indexCtrl', ['$http', function($http) {
+todoApp.factory('indexFactory', ['$http', function($http) {
     var factory = {};
 
-    factory.getTaskSet = function(token,callback){
+    factory.getFeed = function(callback){
         $http({
             method: 'GET',
             url: '/feed'
@@ -29,3 +29,21 @@ todoApp.factory('indexCtrl', ['$http', function($http) {
 
     return factory;
 }]);
+
+todoApp.controller('indexCtrl',
+    ['$cookies','$scope', '$state', 'indexFactory', function($cookies,$scope,$state,indexFactory){
+    $scope.liste_donnee = {};
+    $scope.userR = {};
+    $scope.errorData = {};
+
+    indexFactory.getFeed(function (response) {
+        $scope.liste_donnee = response.data;
+    });
+    $scope.refreshTaskSet = function () {
+
+    }
+
+}]);
+
+
+

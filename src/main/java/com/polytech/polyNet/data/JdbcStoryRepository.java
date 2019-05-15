@@ -1,5 +1,6 @@
 package com.polytech.polyNet.data;
 
+import com.polytech.polyNet.application.Comment;
 import com.polytech.polyNet.application.Story;
 
 import javax.sql.DataSource;
@@ -38,7 +39,27 @@ public class JdbcStoryRepository implements StoryRepository {
 
             while(resultSet.next()) {
                 String content = resultSet.getString("CONTENT");
-                result.add(new Story(content));
+                int id = resultSet.getInt("ID");
+                result.add(new Story(id, content));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @Override
+    public List<Comment> checkStory(Story s) {
+        List<Comment> result = new ArrayList<>();
+        try {
+            //GET CONNEXION :
+            Connection connection = dataSource.getConnection();
+            String sql = "SELECT * FROM Comment WHERE STORY_ID=" + s.getId();
+            ResultSet resultSet = connection.createStatement().executeQuery(sql);
+
+            while(resultSet.next()) {
+                String content = resultSet.getString("CONTENT");
+                result.add(new Comment(s, content));
             }
         } catch (SQLException e) {
             e.printStackTrace();
