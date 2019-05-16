@@ -1,13 +1,4 @@
-import com.polytech.polyNet.application.FeedService;
-import com.polytech.polyNet.application.FeedServiceImpl;
-import com.polytech.polyNet.application.Story;
-import com.polytech.polyNet.data.StoryRepository;
-import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.List;
-
-import static java.util.Arrays.asList;
 
 public class FeedServiceTest {
 

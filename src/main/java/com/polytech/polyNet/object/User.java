@@ -1,4 +1,4 @@
-package com.polytech.polyNet.application;
+package com.polytech.polyNet.object;
 
 public class User {
 

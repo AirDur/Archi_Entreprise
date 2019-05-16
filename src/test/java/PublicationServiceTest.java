@@ -1,15 +1,12 @@
 import com.polytech.polyNet.infrastructure.AppConfig;
 import com.polytech.polyNet.application.PublicationService;
-import com.polytech.polyNet.application.Story;
-import com.polytech.polyNet.data.StoryRepository;
-import org.junit.Assert;
+import com.polytech.polyNet.object.Story;
+import com.polytech.polyNet.repository.StoryRepository;
 import org.junit.Test;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
 
 import java.util.List;
-
-import static java.util.Arrays.asList;
 
 public class PublicationServiceTest {
 

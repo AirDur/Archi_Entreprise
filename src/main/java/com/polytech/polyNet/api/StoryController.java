@@ -1,11 +1,9 @@
-package com.polytech.polyNet.view;
+package com.polytech.polyNet.api;
 
 import com.polytech.polyNet.application.*;
+import com.polytech.polyNet.object.Story;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,12 +23,12 @@ public class StoryController {
     }
 
     @PostMapping("/share")
-    public void share(String content) {
-        publicationService.share(new Story(content));
+    public void share(@RequestBody Story content) {
+        publicationService.share(content);
     }
 
     @GetMapping("/feed")
-    public List<Story> feed() {
+    public List feed() {
         return feedService.fetchAll();
     }
 
@@ -39,8 +37,13 @@ public class StoryController {
         System.out.println(id + " : " + content);
     }
 
+    @PostMapping("/commentStory")
+    public List commentStory(@RequestBody Story id) {
+        return storyDetailService.getComment(id);
+    }
+
     @PostMapping("/story")
-    public List<Comment> story(Story story) {
-        return storyDetailService.getComment(story);
+    public Story story(@RequestBody Story id) {
+        return storyDetailService.getStory(id);
     }
 }

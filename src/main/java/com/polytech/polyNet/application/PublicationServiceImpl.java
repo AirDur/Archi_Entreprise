@@ -1,6 +1,7 @@
 package com.polytech.polyNet.application;
 
-import com.polytech.polyNet.data.StoryRepository;
+import com.polytech.polyNet.object.Story;
+import com.polytech.polyNet.repository.StoryRepository;
 
 public class PublicationServiceImpl implements PublicationService {
     private StoryRepository storyRepository;

@@ -1,7 +1,7 @@
-package com.polytech.polyNet.data;
+package com.polytech.polyNet.repository;
 
-import com.polytech.polyNet.application.Comment;
-import com.polytech.polyNet.application.Story;
+import com.polytech.polyNet.object.Comment;
+import com.polytech.polyNet.object.Story;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -29,7 +29,7 @@ public class JdbcStoryRepository implements StoryRepository {
     }
 
     @Override
-    public List<Story> findAll() {
+    public List findAll() {
         List<Story> result = new ArrayList<>();
         try {
             // GET CONNEXION :
@@ -48,8 +48,29 @@ public class JdbcStoryRepository implements StoryRepository {
         return result;
     }
 
+
     @Override
-    public List<Comment> checkStory(Story s) {
+    public Story getStory(Story id) {
+
+        List<Story> result = new ArrayList<>();
+        try {
+            //GET CONNEXION :
+            Connection connection = dataSource.getConnection();
+            String sql = "SELECT * FROM Story WHERE ID=" + id.getId();
+            ResultSet resultSet = connection.createStatement().executeQuery(sql);
+            while(resultSet.next()) {
+                String content = resultSet.getString("CONTENT");
+                int tempon_id = resultSet.getInt("ID");
+                result.add(new Story(tempon_id, content));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result.get(0);
+    }
+
+    @Override
+    public List getComment(Story s) {
         List<Comment> result = new ArrayList<>();
         try {
             //GET CONNEXION :
