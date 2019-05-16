@@ -5,19 +5,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "Story")
+@Table(name = "story")
 public class Story {
 
+    public Story() {}
+
     @Id
-    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
-    @Column(name = "CONTENT")
+    @Column(name = "content")
     private String content;
 
     @OneToMany()
-    @JoinColumn(name = "STORY_ID")
+    @JoinColumn(name = "story_id")
     private List<Comment> comments = new ArrayList<>();
 
     public Story(String content) {

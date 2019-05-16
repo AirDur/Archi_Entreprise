@@ -1,28 +1,25 @@
 package com.polytech.polyNet.object;
 
-import com.polytech.polyNet.object.Story;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Comment")
+@Table(name = "comment")
 public class Comment {
 
+    public Comment() {}
+
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
     private Integer id;
 
-    private Story story;
-
-    @Column(name = "CONTENT")
+    @Column(name = "content")
     private String content;
 
     public Comment(Story story, String content) {
         this.content  = content;
-        this.story = story;
     }
 
     public String getContent() {

@@ -1,4 +1,4 @@
-import com.polytech.polyNet.infrastructure.AppConfig;
+import com.polytech.polyNet.AppConfig;
 import com.polytech.polyNet.application.PublicationService;
 import com.polytech.polyNet.object.Story;
 import com.polytech.polyNet.repository.StoryRepository;

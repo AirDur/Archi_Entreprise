@@ -21,7 +21,7 @@ public class JdbcStoryRepository implements StoryRepository {
     public void save(Story s) {
         try {
             Connection connection = dataSource.getConnection();
-            String sql = "INSERT INTO Story(CONTENT) VALUES('" + s.getContent() + "')";
+            String sql = "INSERT INTO story(content) VALUES('" + s.getContent() + "')";
             connection.createStatement().execute(sql);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -34,7 +34,7 @@ public class JdbcStoryRepository implements StoryRepository {
         try {
             // GET CONNEXION :
             Connection connection = dataSource.getConnection();
-            String sql = "SELECT * FROM Story";
+            String sql = "SELECT * FROM story";
             ResultSet resultSet = connection.createStatement().executeQuery(sql);
 
             while(resultSet.next()) {
@@ -56,7 +56,7 @@ public class JdbcStoryRepository implements StoryRepository {
         try {
             //GET CONNEXION :
             Connection connection = dataSource.getConnection();
-            String sql = "SELECT * FROM Story WHERE ID=" + id.getId();
+            String sql = "SELECT * FROM story WHERE id=" + id.getId();
             ResultSet resultSet = connection.createStatement().executeQuery(sql);
             while(resultSet.next()) {
                 String content = resultSet.getString("CONTENT");
@@ -75,7 +75,7 @@ public class JdbcStoryRepository implements StoryRepository {
         try {
             //GET CONNEXION :
             Connection connection = dataSource.getConnection();
-            String sql = "SELECT * FROM Comment WHERE STORY_ID=" + s.getId();
+            String sql = "SELECT * FROM comment WHERE story_id=" + s.getId();
             ResultSet resultSet = connection.createStatement().executeQuery(sql);
 
             while(resultSet.next()) {

@@ -1,8 +1,8 @@
-package com.polytech.polyNet.infrastructure;
+package com.polytech.polyNet;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 import com.polytech.polyNet.application.*;
-import com.polytech.polyNet.repository.JdbcStoryRepository;
+import com.polytech.polyNet.repository.JpaStoryRepository;
 import com.polytech.polyNet.repository.StoryRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +14,7 @@ public class AppConfig {
 
     @Bean
     StoryRepository storyRepository() {
-        return new JdbcStoryRepository(datasource());
+        return new JpaStoryRepository();
     }
 
     @Bean
