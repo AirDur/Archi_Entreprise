@@ -71,11 +71,6 @@ public class JdbcStoryRepository implements StoryRepository {
     }
 
     @Override
-    public void register(Users u) {
-
-    }
-
-    @Override
     public List getComment(Story s) {
         List<Comment> result = new ArrayList<>();
         try {

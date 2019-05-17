@@ -13,6 +13,7 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Override
     public void register(Users u) {
-
+        this.userRepository.register(u);
+        //todo
     }
 }

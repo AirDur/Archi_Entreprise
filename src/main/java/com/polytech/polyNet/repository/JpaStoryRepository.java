@@ -1,7 +1,6 @@
 package com.polytech.polyNet.repository;
 
 import com.polytech.polyNet.object.Story;
-import com.polytech.polyNet.object.Users;
 import org.springframework.transaction.annotation.*;
 
 import javax.persistence.EntityManager;
@@ -37,10 +36,5 @@ public class JpaStoryRepository implements StoryRepository {
     public Story getStory(Story id) {
         Query query = entityManager.createQuery("SELECT s FROM Story s WHERE id = " + id.getId());
         return (Story) query.getResultList().get(0);
-    }
-
-    @Override
-    public void register(Users u) {
-        entityManager.persist(u);
     }
 }
