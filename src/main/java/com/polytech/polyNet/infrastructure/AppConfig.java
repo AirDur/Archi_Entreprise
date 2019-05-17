@@ -1,9 +1,8 @@
-package com.polytech.polyNet;
+package com.polytech.polyNet.infrastructure;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 import com.polytech.polyNet.application.*;
-import com.polytech.polyNet.repository.JpaStoryRepository;
-import com.polytech.polyNet.repository.StoryRepository;
+import com.polytech.polyNet.repository.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,6 +14,11 @@ public class AppConfig {
     @Bean
     StoryRepository storyRepository() {
         return new JpaStoryRepository();
+    }
+
+    @Bean
+    UserRepository userRepository() {
+        return new JpaUserRepository();
     }
 
     @Bean
@@ -38,6 +42,10 @@ public class AppConfig {
     }
 
     @Bean
-    StoryDetailService storyDetailService() { return new StoryDetailServiceImpl(storyRepository());}
+    StoryDetailService storyDetailService() { return new StoryDetailServiceImpl(storyRepository()); }
+
+    @Bean
+    RegisterService registerService() { return new RegisterServiceImpl(userRepository()); }
+
 
 }

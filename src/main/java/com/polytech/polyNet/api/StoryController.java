@@ -3,8 +3,10 @@ package com.polytech.polyNet.api;
 import com.polytech.polyNet.application.*;
 import com.polytech.polyNet.object.Story;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -28,7 +30,9 @@ public class StoryController {
     }
 
     @GetMapping("/feed")
-    public List feed() {
+    public List feed(Principal principal) {
+        String username = principal.getName();
+
         return feedService.fetchAll();
     }
 
@@ -46,4 +50,5 @@ public class StoryController {
     public Story story(@RequestBody Story id) {
         return storyDetailService.getStory(id);
     }
+
 }

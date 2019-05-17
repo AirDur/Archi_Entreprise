@@ -5,7 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class AppStarter {
-    public static void main(String[] args) {
+    public static void main(String[] args)
+
+    {
+
         SpringApplication.run(AppStarter.class);
     }
 }

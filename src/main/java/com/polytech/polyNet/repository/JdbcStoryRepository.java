@@ -2,6 +2,7 @@ package com.polytech.polyNet.repository;
 
 import com.polytech.polyNet.object.Comment;
 import com.polytech.polyNet.object.Story;
+import com.polytech.polyNet.object.Users;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -67,6 +68,11 @@ public class JdbcStoryRepository implements StoryRepository {
             e.printStackTrace();
         }
         return result.get(0);
+    }
+
+    @Override
+    public void register(Users u) {
+
     }
 
     @Override
